@@ -34,7 +34,7 @@ def main():
                     redis_conn.set(redis_key, json.dumps(parsed_data))
 
                     database_service.write_data(parsed_data)
-                    print(f"Данные для {url_to_parse} успешно получены и записаны в Redis и ScyllaDB.")
+                    print(f"Данные для {url_to_parse} успешно получены и записаны в Redis и Сassandra.")
                 else:
                     print(f"Ошибка при парсинге для {url_to_parse} или ссылка нерабочая")
     
@@ -42,7 +42,7 @@ def main():
         print(f"Error connecting to Cassandra: {e}")
 
     except Exception as e:
-        print("An unexpected error occurred:")
+        print(f"An unexpected error occurred: {str(e)}")
         print(traceback.format_exc())
 
 

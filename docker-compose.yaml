@@ -7,7 +7,7 @@
 #     environment:
 #       - REDIS_HOST=redis
 #       - REDIS_PORT=6379
-#       - SCYLLA_HOST=cql.cloud-19095.w0.us-east-1.aws.scylla.cloud
+#       - SCYLLA_HOST=localhost
 #       - SCYLLA_PORT=9042
 #       - SCYLLA_KEYSPACE=your_keyspace
 #       - SCYLLA_USERNAME=sashabushuev03@mail.ru
