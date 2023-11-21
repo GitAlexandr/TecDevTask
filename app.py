@@ -6,10 +6,17 @@ from pars.parser import parse_data
 from db.db import DatabaseService
 import traceback
 
+
+def read_urls_from_csv(file_path):
+    with open(file_path, 'r', newline='', encoding='utf-8') as csvfile:
+        reader = csv.reader(csvfile)
+        return [row[0] for row in reader]
+
+
 def main():
     redis_conn = redis.StrictRedis(host='localhost', port=6379, db=0)
 
-    cassandra_host = '127.0.0.1'
+    cassandra_host = 'localhost'
     cassandra_port = 9042
     cassandra_keyspace = 'your_keyspace'
     cassandra_username = 'cassandra'
@@ -37,9 +44,6 @@ def main():
                     print(f"Данные для {url_to_parse} успешно получены и записаны в Redis и Сassandra.")
                 else:
                     print(f"Ошибка при парсинге для {url_to_parse} или ссылка нерабочая")
-    
-    except cassandra.UnresolvableContactPoints as e:
-        print(f"Error connecting to Cassandra: {e}")
 
     except Exception as e:
         print(f"An unexpected error occurred: {str(e)}")
